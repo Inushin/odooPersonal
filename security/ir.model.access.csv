@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_almi-proyecto-personal_almi-proyecto-personal,almi-proyecto-personal.almi-proyecto-personal,model_almi_personal_area_descanso,base.group_user,1,1,1,1
+access_almi-proyecto-personal_almi-proyecto-personal1,almi-proyecto-personal.almi-proyecto-personal,model_almi_personal_maquina,base.group_user,1,1,1,1
+access_almi-proyecto-personal_almi-proyecto-personal2,almi-proyecto-personal.almi-proyecto-personal,model_almi_personal_producto_vending,base.group_user,1,1,1,1
+

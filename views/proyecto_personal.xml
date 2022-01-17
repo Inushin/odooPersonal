@@ -1,0 +1,113 @@
+<odoo>
+    <data>
+
+    <act_window id="action_descanso" name="Area Descanso" res_model="almi_personal_area_descanso"></act_window>
+    <act_window id="action_maquinas" name="Máquinas" res_model="almi_personal_maquina"></act_window>
+    <act_window id="action_productos" name="Productos" res_model="almi_personal_producto_vending"></act_window>
+
+    <menuitem id="proyecto_menu_level0" name="Almimentos de maquinalmia" action="action_descanso"></menuitem>
+    <menuitem id="proyecto_menu_level1" name="Menu Descanso" action="action_descanso" parent="proyecto_menu_level0"></menuitem>
+       <menuitem id="proyecto_menu_level2" name="Menu Productos" action="action_productos" parent="proyecto_menu_level0"></menuitem>
+       <menuitem id="proyecto_menu_level3" name="Menu Máquinas" action="action_maquinas" parent="proyecto_menu_level0"></menuitem>
+
+<!--RECORD DE LA ZONA DESCANSO-->
+    <record id="descanso_form" model="ir.ui.view">
+      <field name="model">almi_personal_area_descanso</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="name"></field>
+            <field name="aforo"></field>
+            <field name="maquinas_vending" widget="many2many_tags"></field>
+            <field name="seccion_fabrica"></field>
+          </group>
+        </form>
+      </field>
+    </record>
+    <record id="descanso_tree" model="ir.ui.view">
+      <field name="model">almi_personal_area_descanso</field>
+      <field name="arch" type="xml">
+        <tree>
+            <field name="name"></field>
+            <field name="seccion_fabrica"></field>
+        </tree>
+      </field>
+    </record>
+
+<!--RECORD DE LAS MÁQUINAS-->
+
+    <record id="maquinas_form" model="ir.ui.view">
+      <field name="model">almi_personal_maquina</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+             <field name="name"></field>
+            <field name="tipo"></field>
+            <field name="proveedor"></field>
+            <field name="productos" widget="many2many_tags"></field>
+            <field name="fecha_revision"></field>
+          </group>
+        </form>
+      </field>
+    </record>
+    <record id="maquinas_tree" model="ir.ui.view">
+      <field name="model">almi_personal_maquina</field>
+      <field name="arch" type="xml">
+        <tree decoration-info="tipo == 'comida'" decoration-warning="tipo == 'refrescos'" decoration-success="tipo == 'cafe'">
+            <field name="name"></field>
+            <field name="tipo"></field>
+        </tree>
+      </field>
+    </record>
+
+<!--RECORD DE LOS PRODUCTOS-->
+
+    <record id="productos_form" model="ir.ui.view">
+      <field name="model">almi_personal_producto_vending</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="name"></field>
+            <field name="descripcion"></field>
+            <field name="tipo"></field>
+            <field name="sano"></field>
+            <field name="precio"></field>
+          </group>
+        </form>
+      </field>
+    </record>
+    <record id="productos_tree" model="ir.ui.view">
+      <field name="model">almi_personal_producto_vending</field>
+      <field name="arch" type="xml">
+        <tree>
+            <field name="name"></field>
+            <field name="tipo"></field>
+            <field name="sano"></field>
+        </tree>
+      </field>
+    </record>
+
+<!--FILTRO SANO Y NOMBRE-->
+    <record id="search_producto" model="ir.ui.view">
+      <field name="model">almi_personal_producto_vending</field>
+      <field name="arch" type="xml">
+        <search>
+            <filter string="Sano" name="sano" domain="['|',('sano','=','Sí'),('sano','=','si'),('sano','=','No'),('sano','=','no')]"/>
+            <field name="name"/>
+        </search>
+      </field>
+    </record>
+
+<!--FILTRO TIPO Y CÓDIGO MÁQUINA-->
+    <record id="search_maquina" model="ir.ui.view">
+      <field name="model">almi_personal_maquina</field>
+      <field name="arch" type="xml">
+        <search>
+            <field name="name"/>
+            <field name="tipo"/>
+        </search>
+      </field>
+    </record>
+
+    </data>
+</odoo>

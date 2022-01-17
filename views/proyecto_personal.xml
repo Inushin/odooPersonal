@@ -92,7 +92,7 @@
       <field name="model">almi_personal_producto_vending</field>
       <field name="arch" type="xml">
         <search>
-            <filter string="Sano" name="sano" domain="['|',('sano','=','Sí'),('sano','=','si'),('sano','=','No'),('sano','=','no')]"/>
+            <filter string="Sano" name="sano" domain="[('sano','=',True)]"/>
             <field name="name"/>
         </search>
       </field>

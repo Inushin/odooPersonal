@@ -7,7 +7,7 @@ class ProductoVending(models.Model):
     name=fields.Char('Nombre')
     descripcion=fields.Html('Descripcion',sanitize=True, strip_style=True, translate=True)
     tipo=fields.Selection([('comida','Comida'),('bebida','Bebida')],'Tipo')
-    sano=fields.Selection([('si','Sí'),('no','No')],'¿Es sano?')
+    sano=fields.Boolean('Sano')
     precio=fields.Float('Precio')
     
 
